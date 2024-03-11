@@ -66,7 +66,7 @@ BankManagementService >> registerBankAccountFor: aPerson withBalance: balance [
 	"Register bank account for aClient with initial balance."
 
 	| bankAccount |
-	bankAccount := (BankAccount withBalance: balance)
+	bankAccount := (BankAccount for: aPerson withBalance: balance)
 		               open;
 		               yourself.
 

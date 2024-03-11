@@ -7,18 +7,19 @@ Class {
 	#instVars : [
 		'number',
 		'balance',
-		'closed'
+		'closed',
+		'owner'
 	],
 	#category : 'BankManagement',
 	#package : 'BankManagement'
 }
 
 { #category : 'instance creation' }
-BankAccount class >> withBalance: amount [
+BankAccount class >> for: aClient withBalance: amount [
 
 	^ self new
-		initializeWithBalance: amount;
-		yourself
+		  initializeWithBalance: amount for: aClient;
+		  yourself
 ]
 
 { #category : 'initialize-release' }
@@ -35,9 +36,11 @@ BankAccount >> initialBalance [
 ]
 
 { #category : 'initialization' }
-BankAccount >> initializeWithBalance: amount [
-balance := amount.
-self initialize 
+BankAccount >> initializeWithBalance: amount for: aClient [
+
+	balance := amount.
+	owner := aClient.
+	self initialize
 ]
 
 { #category : 'initialize-release' }
