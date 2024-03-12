@@ -8,8 +8,9 @@ Class {
 		'id',
 		'accountNumbers'
 	],
-	#category : 'BankManagement',
-	#package : 'BankManagement'
+	#category : 'BankManagement-Management',
+	#package : 'BankManagement',
+	#tag : 'Management'
 }
 
 { #category : 'transfert' }

@@ -6,12 +6,12 @@ Class {
 	#superclass : 'Object',
 	#instVars : [
 		'bankAccount',
-		'value',
-		'date'
+		'date',
+		'txValue'
 	],
-	#category : 'BankManagement-Objects',
+	#category : 'BankManagement-Transaction',
 	#package : 'BankManagement',
-	#tag : 'Objects'
+	#tag : 'Transaction'
 }
 
 { #category : 'initialization' }
@@ -25,15 +25,15 @@ Transaction >> bankAccount [
 Transaction >> initializeWithAmount: amount bankAccount: account [
 	"Initialize new transaction"
 
-	value := amount.
+	txValue := amount.
 	bankAccount := account.
 	date := Date today.
 	self initialize
 ]
 
 { #category : 'initialization' }
-Transaction >> value [
+Transaction >> txValue [
 	"Answer the value of the transaction"
 
-	^ value
+	^ txValue
 ]

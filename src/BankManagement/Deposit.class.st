@@ -4,8 +4,9 @@ Bank account deposit transaction.
 Class {
 	#name : 'Deposit',
 	#superclass : 'Transaction',
-	#category : 'BankManagement',
-	#package : 'BankManagement'
+	#category : 'BankManagement-Transaction',
+	#package : 'BankManagement',
+	#tag : 'Transaction'
 }
 
 { #category : 'instance creation' }

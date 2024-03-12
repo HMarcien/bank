@@ -10,8 +10,9 @@ Class {
 		'closed',
 		'owner'
 	],
-	#category : 'BankManagement',
-	#package : 'BankManagement'
+	#category : 'BankManagement-Management',
+	#package : 'BankManagement',
+	#tag : 'Management'
 }
 
 { #category : 'instance creation' }
@@ -40,6 +41,7 @@ BankAccount >> initializeWithBalance: amount for: aClient [
 
 	balance := amount.
 	owner := aClient.
+	closed := false.
 	self initialize
 ]
 
@@ -47,7 +49,7 @@ BankAccount >> initializeWithBalance: amount for: aClient [
 BankAccount >> isClosed [
 	"Answer yes when account is closed"
 
-	^ closed isTrue 
+	^ closed
 ]
 
 { #category : 'accessing' }
@@ -61,4 +63,9 @@ BankAccount >> open [
 	"Open bank account"
 
 	closed := false
+]
+
+{ #category : 'accessing' }
+BankAccount >> owner [
+	^ owner
 ]

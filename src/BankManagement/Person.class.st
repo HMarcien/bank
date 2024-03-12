@@ -8,8 +8,9 @@ Class {
 		'name',
 		'birthDay'
 	],
-	#category : 'BankManagement',
-	#package : 'BankManagement'
+	#category : 'BankManagement-Management',
+	#package : 'BankManagement',
+	#tag : 'Management'
 }
 
 { #category : 'instance creation' }

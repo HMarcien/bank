@@ -7,6 +7,7 @@ Class {
 	#instVars : [
 		'id'
 	],
-	#category : 'BankManagement',
-	#package : 'BankManagement'
+	#category : 'BankManagement-Management',
+	#package : 'BankManagement',
+	#tag : 'Management'
 }

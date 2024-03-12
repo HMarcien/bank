@@ -8,18 +8,29 @@ Class {
 		'bankAccounts',
 		'transactions'
 	],
-	#category : 'BankManagement',
-	#package : 'BankManagement'
+	#category : 'BankManagement-Management',
+	#package : 'BankManagement',
+	#tag : 'Management'
 }
 
 { #category : 'compute' }
 BankManagementService >> balanceOf: anAccount [
 	"Answer the balance of bank account"
 
-	^ anAccount initialBalance
-	  + ((transactions select: [ :tx | tx bankAccount = anAccount ])
-			   inject: 0
-			   into: [ :sum :each | sum + each value ])
+	| sum |
+	sum := anAccount initialBalance.
+
+	transactions
+		select: [ :each | each bankAccount = anAccount ]
+		thenDo: [ :each | sum := sum + each txValue ].
+
+	^ sum
+]
+
+{ #category : 'accessing' }
+BankManagementService >> bankAccounts [
+
+	^ bankAccounts
 ]
 
 { #category : 'removing' }
@@ -30,14 +41,15 @@ BankManagementService >> closeBankAccount: aBankAccount of: aClient [
 	"@Todo gestion des messages d'erreur en l'absence du compte bancaire."
 	aClientAccounts := bankAccounts at: aClient.
 	account := aClientAccounts like: aBankAccount.
-	account ifNotNil: [ account close ]
+	account ifNotNil: [ account close ].
 ]
 
 { #category : 'transfert' }
 BankManagementService >> deposit: amount to: aBankAccount [
 	"Withdraw money from bank account"
 
-	transactions add: (Deposit of: amount to: aBankAccount)
+	aBankAccount isClosed ifFalse: [
+		transactions add: (Deposit of: amount to: aBankAccount) ]
 ]
 
 { #category : 'initialization' }
@@ -76,6 +88,12 @@ BankManagementService >> registerBankAccountFor: aPerson withBalance: balance [
 		ifAbsentPut: [ Set with: bankAccount ].
 
 	^ bankAccount
+]
+
+{ #category : 'accessing' }
+BankManagementService >> transactions [
+
+	^ transactions
 ]
 
 { #category : 'transfert' }
